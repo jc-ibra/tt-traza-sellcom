@@ -1,0 +1,16 @@
+# TrazaPulso - protección básica
+Options -Indexes
+DirectoryIndex index.php
+
+# No servir archivos de datos, respaldos ni configuración
+<FilesMatch "\.(xlsx|xls|csv|sql|md|log|bak|ini)$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "^(config|instalar|migrar_v2|respaldar|restaurar|sync_glpi)\.php$">
+    Require all denied
+</FilesMatch>
+
+# Archivos ocultos (.env con credenciales, .htaccess, etc.): nunca se sirven
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
